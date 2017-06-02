@@ -1,8 +1,8 @@
 function [theta] = calcular_theta(var)
 % X_lat_lap1(1,1) = lat1(2);
 % X_lat_lap1(1,2) = lat1(1);
-%var = entrada(inicio:fim,1);
-%matriz = zeros(fim-inicio,1);
+
+%Inicio da matriz
 matriz(1,1) = var(2);
 matriz(1,2) = var(1);
 for i=3:length(var)+1 %2 posições a frente do inicio
