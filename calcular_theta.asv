@@ -1,0 +1,14 @@
+function [theta] = calcular_theta(var,inicio,fim)
+m = zeros(fim-inicio,1);
+
+for i=inicio:fim+1;
+   
+    %Reduzo a(3) em uma posição ->a(2), depois em outra posição a(1)
+    m = [m; [var(i-1) var(i-2)] ];
+   
+    
+end
+
+%Multiplicar theta_estimado = PINV*Acc[k]
+ theta = pinv(m)*var;
+end
