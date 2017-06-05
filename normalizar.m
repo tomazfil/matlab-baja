@@ -28,7 +28,7 @@ end
 %primeira janela de tempo
 j=1;
 for i=500:50:length(lat1)
-    i
+   
     theta_lat(j,:) = calcular_theta(lat1(i-499:i));
     theta_long(j,:) = calcular_theta(long1(i-499:i));
     
