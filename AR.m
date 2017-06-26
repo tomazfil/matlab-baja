@@ -43,20 +43,22 @@ theta_GSUM_p2 = calcular_theta(GSUM_p2,k,passo);
 %Matriz de Correlação ##########################
 cov_rpm_p1 = cov(theta_rpm_p1');
 cov_rpm_p2 = cov(theta_rpm_p2');
-[V_rpm_p1,D_rpm_p1] = eig(cov_rpm_p1');
-[V_rpm_p2,D_rpm_p2] = eig(cov_rpm_p2');
+[V_rpm_p1,D_rpm_p1] = eig(cov_rpm_p1);
+[V_rpm_p2,D_rpm_p2] = eig(cov_rpm_p2);
 D_rpm_p1 = diag(D_rpm_p1);
 D_rpm_p2 = diag(D_rpm_p2);
 
-proj1_rpm_p1 = sum(theta_rpm_p1(:,20).*V_rpm_p1(:,20))/...
-                (norm(V_rpm_p1(:,20)))^2*V_rpm_p1(:,20)
-proj2_rpm_p1 = sum(theta_rpm_p1(:,19).*V_rpm_p1(:,19))/...
-                (norm(V_rpm_p1(:,19))^2)*V_rpm_p1(:,19)
-
-proj1_rpm_p2 = sum(theta_rpm_p2(:,19).*V_rpm_p2(:,19))/...
-                (norm(V_rpm_p2(:,19))^2)*V_rpm_p2(:,19)
-proj2_rpm_p2 = sum(theta_rpm_p2(:,20).*V_rpm_p2(:,20))/...
-                (norm(V_rpm_p2(:,20))^2)*V_rpm_p2(:,20)
+pca_rpm_p1 = theta_rpm_p1'*V_rpm_p1;
+pca_rpm_p2 = theta_rpm_p2'*V_rpm_p2;
+% proj1_rpm_p1 = sum(theta_rpm_p1(:,20).*V_rpm_p1(:,20))/...
+%                 (norm(V_rpm_p1(:,20)))^2*V_rpm_p1(:,20)
+% proj2_rpm_p1 = sum(theta_rpm_p1(:,19).*V_rpm_p1(:,19))/...
+%                 (norm(V_rpm_p1(:,19))^2)*V_rpm_p1(:,19)
+% 
+% proj1_rpm_p2 = sum(theta_rpm_p2(:,19).*V_rpm_p2(:,19))/...
+%                 (norm(V_rpm_p2(:,19))^2)*V_rpm_p2(:,19)
+% proj2_rpm_p2 = sum(theta_rpm_p2(:,20).*V_rpm_p2(:,20))/...
+%                 (norm(V_rpm_p2(:,20))^2)*V_rpm_p2(:,20)
 
 cov_GSUM_p1 = cov(theta_GSUM_p1' );
 cov_GSUM_p2 = cov(theta_GSUM_p2' );
@@ -65,25 +67,25 @@ cov_GSUM_p2 = cov(theta_GSUM_p2' );
 D_GSUM_p1 = diag(D_GSUM_p1);
 D_GSUM_p2 = diag(D_GSUM_p2);
 
-proj1_GSUM_p1 = sum(theta_GSUM_p1(:,20).*V_GSUM_p1(:,20))/...
-                (norm(V_GSUM_p1(:,20)))^2*V_GSUM_p1(:,20)
-proj2_GSUM_p1 = sum(theta_GSUM_p1(:,19).*V_GSUM_p1(:,19))/...
-                (norm(V_GSUM_p1(:,19))^2)*V_GSUM_p1(:,19)
+% proj1_GSUM_p1 = sum(theta_GSUM_p1(:,20).*V_GSUM_p1(:,20))/...
+%                 (norm(V_GSUM_p1(:,20)))^2*V_GSUM_p1(:,20)
+% proj2_GSUM_p1 = sum(theta_GSUM_p1(:,19).*V_GSUM_p1(:,19))/...
+%                 (norm(V_GSUM_p1(:,19))^2)*V_GSUM_p1(:,19)
+% 
+% proj1_GSUM_p2 = sum(theta_GSUM_p2(:,19).*V_GSUM_p2(:,19))/...
+%                 (norm(V_GSUM_p2(:,19))^2)*V_GSUM_p2(:,19)
+% proj2_GSUM_p2 = sum(theta_GSUM_p2(:,20).*V_GSUM_p2(:,20))/...
+%                 (norm(V_GSUM_p2(:,20))^2)*V_GSUM_p2(:,20)
 
-proj1_GSUM_p2 = sum(theta_GSUM_p2(:,19).*V_GSUM_p2(:,19))/...
-                (norm(V_GSUM_p2(:,19))^2)*V_GSUM_p2(:,19)
-proj2_GSUM_p2 = sum(theta_GSUM_p2(:,20).*V_GSUM_p2(:,20))/...
-                (norm(V_GSUM_p2(:,20))^2)*V_GSUM_p2(:,20)
-
-figure(1)
-plot(proj1_GSUM_p1,proj2_GSUM_p1,'ro');
-hold on
-plot(proj1_GSUM_p2,proj2_GSUM_p2,'bo')
+% figure(1)
+% plot(proj1_GSUM_p1,proj2_GSUM_p1,'ro');
+% hold on
+% plot(proj1_GSUM_p2,proj2_GSUM_p2,'bo')
 
 figure(2)
-plot(proj1_rpm_p1,proj2_rpm_p1,'ro');
+plot(pca_rpm_p1(:,19),pca_rpm_p1(:,20),'ro');
 hold on
-plot(proj1_rpm_p2,proj2_rpm_p2,'bo')
+plot(pca_rpm_p2(:,19),pca_rpm_p2(:,20),'bo')
 
 % %PLOTS ##########################################
 % %Velocidades

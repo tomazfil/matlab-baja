@@ -30,7 +30,8 @@ col=1;
         end
 
         %Multiplicar theta_estimado = PINV*Acc[k]
-
+        %Dentre os diversos regressores,
+        %O que melhor se aproxima é dado por mínimos quadrados.
         theta(:,col) = pinv(matriz)*temp(k:length(temp)); %inicio no valor var(k)
         col=col+1;
     end
